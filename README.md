@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# the win jar 🏆
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A project to celebrate the small wins that create the bigger successes. 
 
 ## Available Scripts
 

@@ -26,7 +26,7 @@ export interface AddWinsPageProps {
 export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
   return (
     <div className={ContainerStyle}>
-      <p className={HeaderStyle}>hello {user.username}!</p>
+      <p className={HeaderStyle}>heeeey, great to see you! 👋</p>
       <TextFieldInput label={"tell me your win ✨"} isMultiline />
       <ButtonComponent label={"add to win jar"} endIcon={<AddOutlinedIcon />} />
     </div>

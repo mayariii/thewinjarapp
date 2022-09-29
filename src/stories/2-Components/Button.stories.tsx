@@ -15,29 +15,10 @@ const Template: ComponentStory<typeof ButtonComponent> = (args) => (
   <ButtonComponent {...args} />
 );
 
-export const Base = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Base.args = {
-  label: "Base Button",
-};
+// TODO: add support for button variants extending a base button style
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  label: "Add to win jar",
+  label: "Primary Button",
 };
-
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   label: 'Button',
-// };
-//
-// export const Large = Template.bind({});
-// Large.args = {
-//   label: 'Button',
-// };
-//
-// export const Small = Template.bind({});
-// Small.args = {
-//   label: 'Button',
-// };

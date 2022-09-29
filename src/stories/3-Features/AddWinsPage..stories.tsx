@@ -5,4 +5,4 @@ export default {
   title: "3-Features/AddWins",
 };
 
-export const AddWinsPageStory = () => <AddWinsPage></AddWinsPage>;
+export const AddWinsPageStory = () => <AddWinsPage user={"cool person"} />;

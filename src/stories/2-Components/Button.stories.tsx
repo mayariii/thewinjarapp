@@ -1,18 +1,19 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
-import { Button } from "./Button";
+import { ButtonComponent } from "../../components/Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Components(Generic)/Button",
-  component: Button,
+  title: "2-Components/Button",
+  component: ButtonComponent,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof ButtonComponent>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof ButtonComponent> = (args) => (
+  <ButtonComponent {...args} />
+);
 
 export const Base = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -24,7 +25,6 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   label: "Add to win jar",
-  variant: "primary",
 };
 
 // export const Secondary = Template.bind({});

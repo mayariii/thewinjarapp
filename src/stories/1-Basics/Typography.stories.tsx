@@ -1,9 +1,9 @@
 import React from "react";
 
-import * as styles from "../styles";
+import * as styles from "../../styles";
 
 export default {
-  title: "Principles/Typography",
+  title: "1-Basics/Typography",
 };
 
 export const TextStyles = () => (

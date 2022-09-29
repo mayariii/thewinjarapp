@@ -10,6 +10,11 @@
       "StackName": "amplify-thewinjar-dev-213816",
       "StackId": "arn:aws:cloudformation:us-east-1:210313767167:stack/amplify-thewinjar-dev-213816/a76acf40-4036-11ed-833c-12689b2b92c3",
       "AmplifyAppId": "dyu8p994vb3rd"
+    },
+    "categories": {
+      "auth": {
+        "thewinjarae8a92e4": {}
+      }
     }
   }
 }

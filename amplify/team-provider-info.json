@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-thewinjar-dev-213816-authRole",
+      "UnauthRoleArn": "arn:aws:iam::210313767167:role/amplify-thewinjar-dev-213816-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::210313767167:role/amplify-thewinjar-dev-213816-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-thewinjar-dev-213816-deployment",
+      "UnauthRoleName": "amplify-thewinjar-dev-213816-unauthRole",
+      "StackName": "amplify-thewinjar-dev-213816",
+      "StackId": "arn:aws:cloudformation:us-east-1:210313767167:stack/amplify-thewinjar-dev-213816/a76acf40-4036-11ed-833c-12689b2b92c3",
+      "AmplifyAppId": "dyu8p994vb3rd"
+    }
+  }
+}

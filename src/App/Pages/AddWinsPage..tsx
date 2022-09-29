@@ -11,8 +11,6 @@ import {
 import TextFieldInput from "../../components/TextField.";
 import { ButtonComponent } from "../../components/Button";
 
-export interface AddWinsPageProps {}
-
 const ContainerStyle = classnames(
   display("flex"),
   flexDirection("flex-col"),
@@ -21,10 +19,14 @@ const ContainerStyle = classnames(
 );
 const HeaderStyle = `${textHeading}`;
 
-export const AddWinsPage: React.FC<AddWinsPageProps> = () => {
+export interface AddWinsPageProps {
+  user: any;
+}
+
+export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
   return (
     <div className={ContainerStyle}>
-      <p className={HeaderStyle}>welcome to your win jar!</p>
+      <p className={HeaderStyle}>hello {user.username}!</p>
       <TextFieldInput label={"tell me your win ✨"} isMultiline />
       <ButtonComponent label={"add to win jar"} endIcon={<AddOutlinedIcon />} />
     </div>

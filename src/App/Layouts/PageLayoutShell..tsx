@@ -15,10 +15,7 @@ import {
   typographySecondary,
 } from "../../styles";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-
-export interface PageLayoutShellProps {
-  children: React.ReactNode;
-}
+import { Button } from "@aws-amplify/ui-react";
 
 const HeaderStyle = `${typographyPrimaryAccent} ${fontSizeXLarge} ${fontWeightMedium} px-12 py-12`;
 const IconStyle = `ml-1`;
@@ -31,7 +28,16 @@ const ContainerStyle = classnames(
 
 const FooterStyle = `${typographySecondary} ${fontSizeExtraSmall} py-12 px-12`;
 const FooterLinkStyle = `${linkFooter}`;
+
+export interface PageLayoutShellProps {
+  children: React.ReactNode;
+  user: any;
+  signOut: () => any;
+}
+
 export const PageLayoutShell: React.FC<PageLayoutShellProps> = ({
+  user,
+  signOut,
   children,
 }) => {
   return (
@@ -42,6 +48,7 @@ export const PageLayoutShell: React.FC<PageLayoutShellProps> = ({
       </header>
       {children}
       <footer className={FooterStyle}>
+        <Button onClick={signOut}>sign out</Button>
         <a
           href="https://www.nicoleis.xyz"
           target="_blank"

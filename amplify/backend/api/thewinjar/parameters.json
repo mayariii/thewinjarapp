@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "thewinjar",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "auththewinjarae8a92e4",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

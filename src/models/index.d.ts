@@ -1,12 +1,12 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 
 type WinMetaData = {
-  readOnlyFields: 'updatedAt';
+  readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
 export declare class Win {
   readonly id: string;
-  readonly copy?: string | null;
+  readonly win_text?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Win, WinMetaData>);

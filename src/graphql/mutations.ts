@@ -10,12 +10,9 @@ export const createWin = /* GraphQL */ `
     createWin(input: $input, condition: $condition) {
       id
       win_text
+      owner
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;
@@ -27,12 +24,9 @@ export const updateWin = /* GraphQL */ `
     updateWin(input: $input, condition: $condition) {
       id
       win_text
+      owner
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;
@@ -44,12 +38,9 @@ export const deleteWin = /* GraphQL */ `
     deleteWin(input: $input, condition: $condition) {
       id
       win_text
+      owner
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;

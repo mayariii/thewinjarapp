@@ -7,12 +7,9 @@ export const getWin = /* GraphQL */ `
     getWin(id: $id) {
       id
       win_text
+      owner
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;
@@ -26,43 +23,11 @@ export const listWins = /* GraphQL */ `
       items {
         id
         win_text
+        owner
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncWins = /* GraphQL */ `
-  query SyncWins(
-    $filter: ModelWinFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncWins(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        win_text
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;

@@ -1,0 +1,5 @@
+type Win @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  win_text: String
+  owner: String @auth(rules: [{ allow: owner, operations: [read, delete] }])
+}

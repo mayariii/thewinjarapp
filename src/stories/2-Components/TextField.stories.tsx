@@ -6,5 +6,5 @@ export default {
 };
 
 export const TextFieldComponent = () => (
-  <TextFieldInput label={"This is my label"} />
+  <TextFieldInput name={"name"} label={"This is my label"} />
 );

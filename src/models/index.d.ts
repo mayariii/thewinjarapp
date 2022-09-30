@@ -7,6 +7,7 @@ type WinMetaData = {
 export declare class Win {
   readonly id: string;
   readonly win_text?: string | null;
+  readonly owner?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Win, WinMetaData>);

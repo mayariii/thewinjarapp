@@ -6,10 +6,12 @@ import { primaryAccentHex, primaryAccentHoverHex } from "../styles";
 // export type ButtonVariant = "primary";
 
 interface ButtonProps {
+  name?: string;
   label: string;
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
   onClick?: () => void;
+  type?: "submit" | "button" | "reset";
   // variant?: ButtonVariant;
 }
 
@@ -33,17 +35,21 @@ const PrimaryButton = styled(Button)({
 });
 
 export const ButtonComponent: React.FC<ButtonProps> = ({
+  name,
   label,
   startIcon,
   endIcon,
+  type,
 }: ButtonProps) => {
   return (
     <PrimaryButton
+      name={name}
       variant="contained"
       color="success"
       size="large"
       startIcon={startIcon}
       endIcon={endIcon}
+      type={type}
     >
       {label}
     </PrimaryButton>

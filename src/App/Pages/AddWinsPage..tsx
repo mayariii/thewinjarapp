@@ -46,8 +46,6 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
     setWins(winsFromAPI);
   }
 
-  console.log(wins);
-
   async function createWin(event: {
     preventDefault: () => void;
     target: HTMLFormElement | undefined;
@@ -66,13 +64,13 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
     event.target?.reset();
   }
 
-  async function deleteWin({ id, _version }: any) {
+  async function deleteWin({ id }: any) {
     const newWins = wins.filter((win) => win.id !== id);
     setWins(newWins);
     await API.graphql({
       query: deleteWinMutation,
       authMode: "AMAZON_COGNITO_USER_POOLS",
-      variables: { input: { id, _version } },
+      variables: { input: { id } },
     });
   }
   return (
@@ -104,11 +102,10 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <p>{win.id}</p>
                 <p>{win.win_text}</p>
                 <p>{new Date(win.createdAt).toLocaleDateString("en-US")}</p>
                 <Button variation="link" onClick={() => deleteWin(win)}>
-                  Delete win
+                  delete
                 </Button>
               </Flex>
             ))

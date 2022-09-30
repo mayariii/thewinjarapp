@@ -5,11 +5,12 @@
 export type CreateWinInput = {
   id?: string | null,
   win_text?: string | null,
-  _version?: number | null,
+  owner?: string | null,
 };
 
 export type ModelWinConditionInput = {
   win_text?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
   and?: Array< ModelWinConditionInput | null > | null,
   or?: Array< ModelWinConditionInput | null > | null,
   not?: ModelWinConditionInput | null,
@@ -59,28 +60,25 @@ export type Win = {
   __typename: "Win",
   id: string,
   win_text?: string | null,
+  owner?: string | null,
   createdAt: string,
   updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  owner?: string | null,
 };
 
 export type UpdateWinInput = {
   id: string,
   win_text?: string | null,
-  _version?: number | null,
+  owner?: string | null,
 };
 
 export type DeleteWinInput = {
   id: string,
-  _version?: number | null,
 };
 
 export type ModelWinFilterInput = {
   id?: ModelIDInput | null,
   win_text?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
   and?: Array< ModelWinFilterInput | null > | null,
   or?: Array< ModelWinFilterInput | null > | null,
   not?: ModelWinFilterInput | null,
@@ -106,7 +104,6 @@ export type ModelWinConnection = {
   __typename: "ModelWinConnection",
   items:  Array<Win | null >,
   nextToken?: string | null,
-  startedAt?: number | null,
 };
 
 export type CreateWinMutationVariables = {
@@ -119,12 +116,9 @@ export type CreateWinMutation = {
     __typename: "Win",
     id: string,
     win_text?: string | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -138,12 +132,9 @@ export type UpdateWinMutation = {
     __typename: "Win",
     id: string,
     win_text?: string | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -157,12 +148,9 @@ export type DeleteWinMutation = {
     __typename: "Win",
     id: string,
     win_text?: string | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -175,12 +163,9 @@ export type GetWinQuery = {
     __typename: "Win",
     id: string,
     win_text?: string | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -197,41 +182,11 @@ export type ListWinsQuery = {
       __typename: "Win",
       id: string,
       win_text?: string | null,
+      owner?: string | null,
       createdAt: string,
       updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncWinsQueryVariables = {
-  filter?: ModelWinFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncWinsQuery = {
-  syncWins?:  {
-    __typename: "ModelWinConnection",
-    items:  Array< {
-      __typename: "Win",
-      id: string,
-      win_text?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      owner?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
   } | null,
 };
 
@@ -244,12 +199,9 @@ export type OnCreateWinSubscription = {
     __typename: "Win",
     id: string,
     win_text?: string | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -262,12 +214,9 @@ export type OnUpdateWinSubscription = {
     __typename: "Win",
     id: string,
     win_text?: string | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };
 
@@ -280,11 +229,8 @@ export type OnDeleteWinSubscription = {
     __typename: "Win",
     id: string,
     win_text?: string | null,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
   } | null,
 };

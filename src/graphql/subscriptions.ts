@@ -7,12 +7,9 @@ export const onCreateWin = /* GraphQL */ `
     onCreateWin(owner: $owner) {
       id
       win_text
+      owner
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;
@@ -21,12 +18,9 @@ export const onUpdateWin = /* GraphQL */ `
     onUpdateWin(owner: $owner) {
       id
       win_text
+      owner
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;
@@ -35,12 +29,9 @@ export const onDeleteWin = /* GraphQL */ `
     onDeleteWin(owner: $owner) {
       id
       win_text
+      owner
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;

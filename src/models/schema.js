@@ -10,8 +10,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "copy": {
-                    "name": "copy",
+                "win_text": {
+                    "name": "win_text",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -22,7 +22,8 @@ export const schema = {
                     "isArray": false,
                     "type": "AWSDateTime",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isReadOnly": true
                 },
                 "updatedAt": {
                     "name": "updatedAt",
@@ -73,5 +74,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "4fc5c66ff9f6b693a927c87192edbf49"
+    "version": "9212a8ef1e544f6644e72923a5907fc4"
 };

@@ -12,9 +12,9 @@ import { AmplifyProvider, Authenticator } from "@aws-amplify/ui-react";
 const isLocalhost = !!(window.location.hostname === "localhost");
 
 // split redirect signin and signout strings into correct URIs
-const [localRedirectSignIn, productionRedirectSignIn] =
+const [doNotUseSignIn, productionRedirectSignIn, localRedirectSignIn] =
   config.oauth.redirectSignIn.split(",");
-const [localRedirectSignOut, productionRedirectSignOut] =
+const [doNotUseSignOut, productionRedirectSignOut, localRedirectSignOut] =
   config.oauth.redirectSignOut.split(",");
 
 // use correct URI in the right env

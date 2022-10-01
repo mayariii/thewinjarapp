@@ -36,11 +36,10 @@ const WinListStyle = classnames(
   classes.display("flex"),
   classes.flexDirection("flex-col"),
   classes.alignItems("items-start"),
-  classes.width("w-full"),
   classes.gap("gap-8")
 );
 
-const WinStyle = classnames(
+const WinItemStyle = classnames(
   classes.display("flex"),
   classes.alignItems("items-start"),
   classes.justifyContent("justify-between")
@@ -48,16 +47,15 @@ const WinStyle = classnames(
 
 const WinContentStyle = classnames(
   classes.display("flex"),
-  classes.flexWrap("flex-wrap"),
   classes.flexDirection("flex-col"),
-  classes.alignItems("items-start"),
-  classes.justifyContent("justify-start"),
-  classes.width("w-96"),
+  classes.width("w-64"),
+  classes.width("md:w-96"),
   classes.whitespace("whitespace-normal"),
-  classes.flex("flex-initial")
+  classes.overflow("overflow-hidden"),
+  classes.wordBreak("break-normal")
 );
 
-const WinTextStyle = `${styles.typographyPrimary} flex-initial`;
+const WinTextStyle = `${styles.typographyPrimary}`;
 const DateStyle = `${styles.typographySecondary} ${styles.fontSizeSmall}`;
 
 // style config for MUI modal
@@ -66,6 +64,7 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  minWidth: "30vw",
   maxWidth: "80vw",
   maxHeight: "80vh",
   borderRadius: "8px",
@@ -183,16 +182,25 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
           />
         </View>
         <View className={ContainerStyle}>
-          <Tooltip title="No wins yet">
-            <span>
-              <SecondaryButton
-                label={"open win jar"}
-                onClick={() => setIsWinJarOpen(true)}
-                disabled={!wins.length}
-                startIcon={<AutoAwesomeOutlinedIcon />}
-              />
-            </span>
-          </Tooltip>
+          {!wins.length ? (
+            <Tooltip title="No wins yet">
+              <span>
+                <SecondaryButton
+                  label={"open win jar"}
+                  onClick={() => setIsWinJarOpen(true)}
+                  disabled={!wins.length}
+                  startIcon={<AutoAwesomeOutlinedIcon />}
+                />
+              </span>
+            </Tooltip>
+          ) : (
+            <SecondaryButton
+              label={"open win jar"}
+              onClick={() => setIsWinJarOpen(true)}
+              disabled={!wins.length}
+              startIcon={<AutoAwesomeOutlinedIcon />}
+            />
+          )}
           <Modal
             open={isWinJarOpen}
             onClose={() => setIsWinJarOpen(false)}
@@ -210,12 +218,14 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
                   ) : (
                     wins
                       .map((win) => (
-                        <div key={win.id} className={WinStyle}>
+                        <div key={win.id} className={WinItemStyle}>
                           <div className={WinContentStyle}>
                             <span className={DateStyle}>
                               {new Date(win.createdAt).toLocaleDateString()}
                             </span>
-                            <span className={WinTextStyle}>{win.win_text}</span>
+                            <div className={WinTextStyle}>
+                              <span>{win.win_text}</span>
+                            </div>
                           </div>
                           <IconButton
                             aria-label="delete win"

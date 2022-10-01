@@ -70,7 +70,7 @@ const Secondary = styled(Button)({
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: styles.primaryAccentHex,
+    backgroundColor: styles.primaryAccent100Hex,
   },
   "&:focus": {
     boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",

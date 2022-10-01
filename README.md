@@ -26,6 +26,7 @@ https://user-images.githubusercontent.com/70478809/193430209-de2469d5-354e-4d38-
 
 ## Current Features 👩🏻‍💻
 - Create an account/sign in with your own Win Jar Account
+- Google SSO
 - Add a win
 - Remove a win
 - View your wins when you log back in
@@ -34,10 +35,6 @@ https://user-images.githubusercontent.com/70478809/193430209-de2469d5-354e-4d38-
 ## Future improvements 🔮
 ### Features
 - The user can edit wins
-- The user can log in with SSO successfully
-- The wins are hidden until the user clicks 'open win jar'
-- The user sees a toast notification when a win is added successfully or error
-- The user see's confetti when they add a win
 - The user can 'lock' their win jar access - so they can add wins but only open it on a certain date (e.g. New Year, anniversary, X months in the future)
 - The user can set reminders to add a win (help with habit building)
 - The user can have multiple jars for different contexts (e.g personal, work)
@@ -46,6 +43,9 @@ https://user-images.githubusercontent.com/70478809/193430209-de2469d5-354e-4d38-
 - The user can view statistics about their wins (e.g. win streak (like habit tracking))
 - The dashboard displays a random win from the past (like Facebook memories, 'hey remember this? go you!!')
 - The user can select and export their wins in a format that can be shared - (e.g. might be useful in a work setting when it comes to performance appraisals so you can share with your manager)
+- The user can search through their wins
+- The wins can be assigned tags
+- The user can filter their wins by certain parameters e.g. date, tags
 - Allow user to have and update profile and have personalisation in UI, e.g. 'Hello {FIRST_NAME}'
 
 ### Technical / Project

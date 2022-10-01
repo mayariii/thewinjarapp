@@ -13,23 +13,32 @@ import React from "react";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import * as styles from "../../styles";
 
+const HeaderStyle = `${styles.typographyPrimaryAccent} ${styles.fontWeightMedium}`;
 const IconStyle = `ml-1`;
 
 export function SignInHeader() {
   const { tokens } = useTheme();
 
   return (
-    <Heading level={3} padding={`${tokens.space.xl} ${tokens.space.xl} 0`}>
-      sign in to the win jar
-      <SentimentVerySatisfiedOutlinedIcon className={IconStyle} />
-    </Heading>
+    <Flex
+      justifyContent={"center"}
+      padding={`${tokens.space.xl} ${tokens.space.xl}`}
+    >
+      <Heading level={3}>
+        <span className={HeaderStyle}>
+          the win jar
+          <SentimentVerySatisfiedOutlinedIcon
+            fontSize="large"
+            className={IconStyle}
+          />
+        </span>
+      </Heading>
+    </Flex>
   );
 }
 
 const components = {
-  SignIn: {
-    Header: SignInHeader,
-  },
+  Header: SignInHeader,
 };
 
 export interface LoginProps {}

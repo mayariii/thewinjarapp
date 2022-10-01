@@ -20,7 +20,8 @@ import {
 } from "../../graphql/mutations";
 import { View } from "@aws-amplify/ui-react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton } from "@mui/material";
+import { IconButton, Snackbar } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -49,6 +50,13 @@ const WinStyle = classnames(
 );
 
 const DateStyle = `${styles.typographySecondary}`;
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export interface AddWinsPageProps {
   user: any;
@@ -79,11 +87,14 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
     const data = {
       win_text: form.get("winText"),
     };
-    await API.graphql({
-      query: createWinMutation,
-      authMode: "AMAZON_COGNITO_USER_POOLS",
-      variables: { input: data },
-    });
+    try {
+      await API.graphql({
+        query: createWinMutation,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
+        variables: { input: data },
+      });
+    } catch {}
+
     fetchWins();
     event.target?.reset();
   }
@@ -97,6 +108,32 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
       variables: { input: { id } },
     });
   }
+
+  const [isSuccessAlertVisible, setIsSuccessAlertVisible] =
+    React.useState(false);
+  const [alertText, setAlertText] = React.useState("");
+
+  const handleAddWinClick = () => {
+    setAlertText("Successfully added to your win jar! 🎉");
+    setIsSuccessAlertVisible(true);
+  };
+
+  const handleDeleteWinClick = () => {
+    setAlertText("Win deleted");
+    setIsSuccessAlertVisible(true);
+  };
+
+  const handleAlertClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setIsSuccessAlertVisible(false);
+    setAlertText("");
+  };
+
   return (
     <>
       <View>
@@ -112,7 +149,21 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
               label={"add to win jar"}
               endIcon={<AddOutlinedIcon />}
               type={"submit"}
+              onClick={handleAddWinClick}
             />
+            <Snackbar
+              open={isSuccessAlertVisible}
+              autoHideDuration={6000}
+              onClose={handleAlertClose}
+            >
+              <Alert
+                onClose={handleAlertClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                {alertText}
+              </Alert>
+            </Snackbar>
           </div>
         </View>
         <View margin="3rem 0">
@@ -133,7 +184,10 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
                         <IconButton
                           aria-label="delete win"
                           size={"small"}
-                          onClick={() => deleteWin(win)}
+                          onClick={() => {
+                            deleteWin(win);
+                            handleDeleteWinClick();
+                          }}
                         >
                           <DeleteIcon fontSize="small" />
                         </IconButton>

@@ -11,9 +11,6 @@ Grown from an entry to the AWS Amplify x Hashnode Hackathon - you can read more 
 https://user-images.githubusercontent.com/70478809/193430209-de2469d5-354e-4d38-ae9d-dea1d5129ed2.mov
 
 
-
-![Screenshot of app](https://user-images.githubusercontent.com/70478809/193377779-7e880c67-d26b-40e8-8e89-8bc8b111a752.png)
-
 ## Technology used:
 
 - React (CRA)

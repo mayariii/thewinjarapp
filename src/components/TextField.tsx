@@ -1,10 +1,6 @@
 import React from "react";
 import { styled, TextField } from "@mui/material";
-import {
-  primaryAccentHex,
-  primaryAccentHoverHex,
-  secondaryHex,
-} from "../styles";
+import * as styles from "../styles";
 
 export interface TextFieldProps {
   label: string;
@@ -14,20 +10,20 @@ export interface TextFieldProps {
 
 const MUITextField = styled(TextField)({
   "& label.Mui-focused": {
-    color: primaryAccentHex,
+    color: styles.primaryAccentHex,
   },
   "& .MuiInput-underline:after": {
-    borderBottomColor: primaryAccentHex,
+    borderBottomColor: styles.primaryAccentHex,
   },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: primaryAccentHex,
+      borderColor: styles.primaryAccentHex,
     },
     "&:hover fieldset": {
-      borderColor: primaryAccentHoverHex,
+      borderColor: styles.primaryAccentHoverHex,
     },
     "&.Mui-focused fieldset": {
-      borderColor: secondaryHex,
+      borderColor: styles.secondaryHex,
     },
   },
 });

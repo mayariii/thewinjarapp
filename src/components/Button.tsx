@@ -1,11 +1,6 @@
 import React from "react";
 import { Button, styled } from "@mui/material";
-import {
-  primaryAccentHex,
-  primaryAccentHoverHex,
-  secondaryHex,
-  secondaryHoverHex,
-} from "../styles";
+import * as styles from "../styles";
 
 // TODO: add support for button variants extending a base button style to reduce code duplicationn
 
@@ -23,14 +18,14 @@ const Primary = styled(Button)({
   textTransform: "none",
   border: "1px solid",
   borderRadius: "6px",
-  backgroundColor: primaryAccentHex,
+  backgroundColor: styles.primaryAccentHex,
   "&:hover": {
-    backgroundColor: primaryAccentHoverHex,
+    backgroundColor: styles.primaryAccentHoverHex,
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: primaryAccentHex,
+    backgroundColor: styles.primaryAccentHex,
   },
   "&:focus": {
     boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
@@ -63,14 +58,14 @@ export const PrimaryButton: React.FC<ButtonProps> = ({
 const Secondary = styled(Button)({
   boxShadow: "none",
   textTransform: "none",
-  color: secondaryHex,
+  color: styles.secondaryHex,
   "&:hover": {
-    backgroundColor: secondaryHoverHex,
+    backgroundColor: styles.secondaryHoverHex,
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: secondaryHoverHex,
+    backgroundColor: styles.secondaryHoverHex,
   },
   "&:focus": {
     boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",

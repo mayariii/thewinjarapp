@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import { textHeading, typographySecondary } from "../../styles";
+import * as styles from "../../styles";
 import {
   alignItems,
   classnames,
@@ -32,7 +32,7 @@ const ContainerStyle = classnames(
   alignItems("items-center"),
   gap("gap-12")
 );
-const HeaderStyle = `${textHeading}`;
+const HeaderStyle = `${styles.textHeading}`;
 
 const WinListStyle = classnames(
   display("flex"),
@@ -48,7 +48,7 @@ const WinStyle = classnames(
   width("w-96")
 );
 
-const DateStyle = `${typographySecondary}`;
+const DateStyle = `${styles.typographySecondary}`;
 
 export interface AddWinsPageProps {
   user: any;
@@ -118,7 +118,7 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
         <View margin="3rem 0">
           <div className={WinListStyle}>
             {wins.length === 0 ? (
-              <p className={`${typographySecondary}`}>no wins yet</p>
+              <p className={`${styles.typographySecondary}`}>no wins yet</p>
             ) : (
               wins.map((win) => (
                 <div className={WinStyle} key={win.id}>

@@ -1,14 +1,10 @@
 import React from "react";
 import { SecondaryButton } from "../../components/Button";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import {
-  fontSizeExtraSmall,
-  linkFooter,
-  typographySecondary,
-} from "../../styles";
+import * as styles from "../../styles";
 
-const FooterStyle = `${typographySecondary} ${fontSizeExtraSmall} py-8 px-12`;
-const FooterLinkStyle = `${linkFooter}`;
+const FooterStyle = `${styles.typographySecondary} ${styles.fontSizeExtraSmall} py-8 px-12`;
+const FooterLinkStyle = `${styles.linkFooter}`;
 
 export interface FooterProps {
   signOut: () => any;

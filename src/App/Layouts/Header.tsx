@@ -1,12 +1,8 @@
 import React from "react";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import {
-  fontSizeXLarge,
-  fontWeightMedium,
-  typographyPrimaryAccent,
-} from "../../styles";
+import * as styles from "../../styles";
 
-const HeaderStyle = `${typographyPrimaryAccent} ${fontSizeXLarge} ${fontWeightMedium} px-12 py-12`;
+const HeaderStyle = `${styles.typographyPrimaryAccent} ${styles.fontSizeXLarge} ${styles.fontWeightMedium} px-12 py-12`;
 const IconStyle = `ml-1`;
 
 export interface HeaderProps {}

@@ -6,8 +6,8 @@ import {
   height,
   justifyContent,
 } from "tailwindcss-classnames";
-import Header from "./Header.";
-import Footer from "./Footer.";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const ContainerStyle = classnames(
   display("flex"),

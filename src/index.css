@@ -1,17 +1,29 @@
 body {
   margin: 0;
-  /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
-  /*  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
-  /*  sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/*code {*/
-/*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
-/*    monospace;*/
-/*}*/
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*:root {*/
+/*  --amplify-colors-brand-primary-10: '#7c3aed';*/
+/*  --amplify-colors-brand-primary-20: '#7c3aed';*/
+/*  --amplify-colors-brand-primary-40: '#7c3aed';*/
+/*  --amplify-colors-brand-primary-60: '#7c3aed';*/
+/*  --amplify-colors-brand-primary-80: '#7c3aed';*/
+/*  --amplify-colors-brand-primary-90: '#7c3aed';*/
+/*  --amplify-colors-brand-primary-100: '#7c3aed';*/
+/*}*/
+
+/*.amplify-button[data-variation='primary'] {*/
+/*  background: #7c3aed;*/
+/*}*/
+/*.amplify-button[data-variation='primary']:hover {*/
+/*  background: #a78bfa;*/
+/*}*/
+/*.amplify-button[data-variation='primary']:active {*/
+/*  background: #a78bfa;*/
+/*}*/

@@ -10,7 +10,7 @@ import {
   justifyContent,
   width,
 } from "tailwindcss-classnames";
-import TextFieldInput from "../../components/TextField.";
+import TextFieldInput from "../../components/TextField";
 import { PrimaryButton } from "../../components/Button";
 import { API } from "aws-amplify";
 import { listWins } from "../../graphql/queries";

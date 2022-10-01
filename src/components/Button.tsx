@@ -7,8 +7,7 @@ import {
   secondaryHoverHex,
 } from "../styles";
 
-// TODO: add support for button variants extending a base button style
-// export type ButtonVariant = "primary";
+// TODO: add support for button variants extending a base button style to reduce code duplicationn
 
 interface ButtonProps {
   name?: string;
@@ -17,7 +16,6 @@ interface ButtonProps {
   endIcon?: JSX.Element;
   onClick?: () => void;
   type?: "submit" | "button" | "reset";
-  // variant?: ButtonVariant;
 }
 
 const Primary = styled(Button)({

@@ -8,7 +8,6 @@ import {
   flexDirection,
   gap,
   justifyContent,
-  textAlign,
   width,
 } from "tailwindcss-classnames";
 import TextFieldInput from "../../components/TextField.";
@@ -19,12 +18,11 @@ import {
   createWin as createWinMutation,
   deleteWin as deleteWinMutation,
 } from "../../graphql/mutations";
-import { Button, Flex, View } from "@aws-amplify/ui-react";
+import { View } from "@aws-amplify/ui-react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 
@@ -132,7 +130,6 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
                   >
                     <ListItem alignItems="flex-start">
                       <ListItemAvatar>
-                        {" "}
                         <IconButton
                           aria-label="delete win"
                           size={"small"}
@@ -148,13 +145,13 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
                           </>
                         }
                         secondary={
-                          <React.Fragment>
+                          <>
                             <p className={DateStyle}>
                               {new Date(win.createdAt).toLocaleDateString(
                                 "en-US"
                               )}
                             </p>
-                          </React.Fragment>
+                          </>
                         }
                       />
                     </ListItem>

@@ -64,15 +64,6 @@ export const focusButton = classnames(
   ringColor("focus:ring-violet-500")
 );
 
-// EFFECTS >> shadows
-export const shadowSmall = classnames(boxShadow("shadow-sm"));
-
-// EFFECTS >> borders
-export const borderTransparent = classnames(
-  borders("border", "border-transparent")
-);
-
-export const borderRadiusMedium = classnames(borderRadius("rounded-md"));
 // -----
 // TYPOGRAPHY >> font size
 export const fontSizeBase = classnames(fontSize("text-base"));
@@ -84,9 +75,6 @@ export const fontSizeXLarge = classnames(fontSize("text-xl"));
 // TYPOGRAPHY >> font weight
 export const fontWeightMedium = classnames(fontWeight("font-medium"));
 export const fontWeightSemiBold = classnames(fontWeight("font-semibold"));
-// -----
-// LAYOUT >> flex
-export const flexInlineFlex = classnames(display("inline-flex"));
 
 // --------------------
 // 🧱 BASICS
@@ -99,21 +87,6 @@ export const textHeading = classnames(
 export const textPlaceholder = classnames(typographySecondary, fontSizeSmall);
 export const textBody = classnames(typographyPrimary, fontSizeSmall);
 export const textLabel = classnames(typographySecondary, fontSizeExtraSmall);
-
-// ICONS
-export const iconButton = classnames(
-  spacing("ml-3", "mr-1"),
-  width("w-5"),
-  height("h-5")
-);
-
-export const iconAccent = classnames(width("w-5"), height("h-5"));
-
-// SIZING
-export const iconSize4 = "h-4 w-4";
-export const iconSize5 = "h-5 w-5";
-export const iconSize6 = "h-6 w-6";
-export const iconSize8 = "h-8 w-8";
 
 // LINKS
 export const linkBase = `block rounded-md py-2 px-3 text-base font-medium no-underline`;

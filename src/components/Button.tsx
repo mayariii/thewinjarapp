@@ -11,6 +11,7 @@ interface ButtonProps {
   endIcon?: JSX.Element;
   onClick?: () => void;
   type?: "submit" | "button" | "reset";
+  disabled?: boolean;
 }
 
 const Primary = styled(Button)({
@@ -39,6 +40,7 @@ export const PrimaryButton: React.FC<ButtonProps> = ({
   endIcon,
   type,
   onClick,
+  disabled,
 }: ButtonProps) => {
   return (
     <Primary
@@ -49,6 +51,7 @@ export const PrimaryButton: React.FC<ButtonProps> = ({
       endIcon={endIcon}
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >
       {label}
     </Primary>
@@ -79,6 +82,7 @@ export const SecondaryButton: React.FC<ButtonProps> = ({
   endIcon,
   type,
   onClick,
+  disabled,
 }: ButtonProps) => {
   return (
     <Secondary
@@ -89,6 +93,7 @@ export const SecondaryButton: React.FC<ButtonProps> = ({
       endIcon={endIcon}
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >
       {label}
     </Secondary>

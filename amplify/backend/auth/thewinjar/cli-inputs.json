@@ -50,8 +50,10 @@
     "authProviders": [],
     "hostedUI": true,
     "hostedUIDomainName": "x89ry65uo2y6",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid profile email\",\"AttributeMapping\":{\"name\":\"name\",\"email\":\"email\",\"username\":\"sub\"}}]",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
     "authRoleArn": {

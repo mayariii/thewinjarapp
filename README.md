@@ -6,7 +6,7 @@ A project to celebrate the small wins that create the bigger successes.
 
 Grown from an entry to the AWS Amplify x Hashnode Hackathon - you can read more [here](https://www.nicoleintech.com/the-win-jar-hacking-our-positive-psychology-and-building-with-aws-amplify).
 
-![Screenshot of app](../../../../Desktop/Screenshot 2022-10-01 at 01.35.12.png)
+![Screenshot of app](https://user-images.githubusercontent.com/70478809/193377779-7e880c67-d26b-40e8-8e89-8bc8b111a752.png)
 
 ## Technology used:
 

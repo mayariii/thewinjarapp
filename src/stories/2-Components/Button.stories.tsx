@@ -1,18 +1,18 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ButtonComponent } from "../../components/Button";
+import { PrimaryButton } from "../../components/Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "2-Components/Button",
-  component: ButtonComponent,
+  component: PrimaryButton,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} as ComponentMeta<typeof ButtonComponent>;
+} as ComponentMeta<typeof PrimaryButton>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ButtonComponent> = (args) => (
-  <ButtonComponent {...args} />
+const Template: ComponentStory<typeof PrimaryButton> = (args) => (
+  <PrimaryButton {...args} />
 );
 
 // TODO: add support for button variants extending a base button style

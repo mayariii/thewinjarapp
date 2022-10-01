@@ -7,9 +7,12 @@ import {
   display,
   flexDirection,
   gap,
+  justifyContent,
+  textAlign,
+  width,
 } from "tailwindcss-classnames";
 import TextFieldInput from "../../components/TextField.";
-import { ButtonComponent } from "../../components/Button";
+import { PrimaryButton } from "../../components/Button";
 import { API } from "aws-amplify";
 import { listWins } from "../../graphql/queries";
 import {
@@ -17,6 +20,13 @@ import {
   deleteWin as deleteWinMutation,
 } from "../../graphql/mutations";
 import { Button, Flex, View } from "@aws-amplify/ui-react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { IconButton } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
 
 const ContainerStyle = classnames(
   display("flex"),
@@ -25,6 +35,22 @@ const ContainerStyle = classnames(
   gap("gap-12")
 );
 const HeaderStyle = `${textHeading}`;
+
+const WinListStyle = classnames(
+  display("flex"),
+  flexDirection("flex-col"),
+  alignItems("items-center")
+);
+
+const WinStyle = classnames(
+  display("flex"),
+  flexDirection("flex-col"),
+  alignItems("items-center"),
+  justifyContent("justify-start"),
+  width("w-96")
+);
+
+const DateStyle = `${typographySecondary}`;
 
 export interface AddWinsPageProps {
   user: any;
@@ -78,13 +104,13 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
       <View>
         <View as="form" onSubmit={createWin}>
           <div className={ContainerStyle}>
-            <p className={HeaderStyle}>heeeey, great to see you! 👋</p>
+            <p className={HeaderStyle}>{`heeeey, great to see you! 👋`}</p>
             <TextFieldInput
               label={"tell me your win ✨"}
               isMultiline
               name={"winText"}
             />
-            <ButtonComponent
+            <PrimaryButton
               label={"add to win jar"}
               endIcon={<AddOutlinedIcon />}
               type={"submit"}
@@ -92,24 +118,51 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
           </div>
         </View>
         <View margin="3rem 0">
-          {wins.length === 0 ? (
-            <p className={`${typographySecondary}`}>no wins yet</p>
-          ) : (
-            wins.map((win) => (
-              <Flex
-                key={win.id}
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <p>{win.win_text}</p>
-                <p>{new Date(win.createdAt).toLocaleDateString("en-US")}</p>
-                <Button variation="link" onClick={() => deleteWin(win)}>
-                  delete
-                </Button>
-              </Flex>
-            ))
-          )}
+          <div className={WinListStyle}>
+            {wins.length === 0 ? (
+              <p className={`${typographySecondary}`}>no wins yet</p>
+            ) : (
+              wins.map((win) => (
+                <div className={WinStyle} key={win.id}>
+                  <List
+                    sx={{
+                      width: "100%",
+                      maxWidth: 360,
+                    }}
+                  >
+                    <ListItem alignItems="flex-start">
+                      <ListItemAvatar>
+                        {" "}
+                        <IconButton
+                          aria-label="delete win"
+                          size={"small"}
+                          onClick={() => deleteWin(win)}
+                        >
+                          <DeleteIcon fontSize="small" />
+                        </IconButton>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={
+                          <>
+                            <p>{win.win_text}</p>
+                          </>
+                        }
+                        secondary={
+                          <React.Fragment>
+                            <p className={DateStyle}>
+                              {new Date(win.createdAt).toLocaleDateString(
+                                "en-US"
+                              )}
+                            </p>
+                          </React.Fragment>
+                        }
+                      />
+                    </ListItem>
+                  </List>
+                </div>
+              ))
+            )}
+          </div>
         </View>
       </View>
     </>

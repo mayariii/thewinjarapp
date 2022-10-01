@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Amplify } from "aws-amplify";
 
 import config from "./aws-exports";
+import { AmplifyProvider, Authenticator } from "@aws-amplify/ui-react";
 
 // check if env is localhost or not
 const isLocalhost = !!(window.location.hostname === "localhost");
@@ -36,7 +37,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <AmplifyProvider>
+      <Authenticator.Provider>
+        <App />
+      </Authenticator.Provider>
+    </AmplifyProvider>
   </React.StrictMode>
 );
 

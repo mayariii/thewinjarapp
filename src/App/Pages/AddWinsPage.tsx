@@ -104,7 +104,14 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
       authMode: "AMAZON_COGNITO_USER_POOLS",
     }) as Promise<any>);
     const winsFromAPI = apiData.data.listWins.items;
-    setWins(winsFromAPI);
+    const winsSorted = winsFromAPI.sort(
+      (a: { createdAt: string }, b: { createdAt: string }) => {
+        var dateA = new Date(a.createdAt);
+        var dateB = new Date(b.createdAt);
+        return (dateB as any) - (dateA as any);
+      }
+    );
+    setWins(winsSorted);
   }
 
   async function createWin(event: {
@@ -216,30 +223,28 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
                       no wins yet
                     </p>
                   ) : (
-                    wins
-                      .map((win) => (
-                        <div key={win.id} className={WinItemStyle}>
-                          <div className={WinContentStyle}>
-                            <span className={DateStyle}>
-                              {new Date(win.createdAt).toLocaleDateString()}
-                            </span>
-                            <div className={WinTextStyle}>
-                              <span>{win.win_text}</span>
-                            </div>
+                    wins.map((win) => (
+                      <div key={win.id} className={WinItemStyle}>
+                        <div className={WinContentStyle}>
+                          <span className={DateStyle}>
+                            {new Date(win.createdAt).toLocaleDateString()}
+                          </span>
+                          <div className={WinTextStyle}>
+                            <span>{win.win_text}</span>
                           </div>
-                          <IconButton
-                            aria-label="delete win"
-                            size={"small"}
-                            onClick={() => {
-                              deleteWin(win);
-                              handleDeleteWinClick();
-                            }}
-                          >
-                            <DeleteIcon fontSize="small" />
-                          </IconButton>
                         </div>
-                      ))
-                      .reverse()
+                        <IconButton
+                          aria-label="delete win"
+                          size={"small"}
+                          onClick={() => {
+                            deleteWin(win);
+                            handleDeleteWinClick();
+                          }}
+                        >
+                          <DeleteIcon fontSize="small" />
+                        </IconButton>
+                      </div>
+                    ))
                   )}
                 </div>
               </Box>

@@ -147,9 +147,7 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
                         secondary={
                           <>
                             <p className={DateStyle}>
-                              {new Date(win.createdAt).toLocaleDateString(
-                                "en-US"
-                              )}
+                              {new Date(win.createdAt).toLocaleDateString()}
                             </p>
                           </>
                         }

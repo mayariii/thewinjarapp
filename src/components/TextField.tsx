@@ -6,6 +6,8 @@ export interface TextFieldProps {
   label: string;
   name: string;
   isMultiline?: boolean;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => any;
 }
 
 const MUITextField = styled(TextField)({
@@ -32,6 +34,8 @@ export const TextFieldInput: React.FC<TextFieldProps> = ({
   name,
   label,
   isMultiline,
+  value,
+  onChange,
 }) => {
   return (
     <MUITextField
@@ -39,6 +43,8 @@ export const TextFieldInput: React.FC<TextFieldProps> = ({
       variant="outlined"
       multiline={isMultiline}
       name={name}
+      value={value}
+      onChange={onChange}
     />
   );
 };

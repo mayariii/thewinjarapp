@@ -93,8 +93,10 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
         authMode: "AMAZON_COGNITO_USER_POOLS",
         variables: { input: data },
       });
-    } catch {}
-
+      handleAddWinClick();
+    } catch (err) {
+      console.log(err);
+    }
     fetchWins();
     event.target?.reset();
   }
@@ -112,10 +114,12 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
   const [isSuccessAlertVisible, setIsSuccessAlertVisible] =
     React.useState(false);
   const [alertText, setAlertText] = React.useState("");
+  const [winText, setWinText] = useState("");
 
   const handleAddWinClick = () => {
     setAlertText("Successfully added to your win jar! 🎉");
     setIsSuccessAlertVisible(true);
+    setWinText("");
   };
 
   const handleDeleteWinClick = () => {
@@ -144,12 +148,14 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
               label={"tell me your win ✨"}
               isMultiline
               name={"winText"}
+              value={winText}
+              onChange={(event) => setWinText(event.target.value)}
             />
             <PrimaryButton
               label={"add to win jar"}
               endIcon={<AddOutlinedIcon />}
               type={"submit"}
-              onClick={handleAddWinClick}
+              disabled={!winText}
             />
             <Snackbar
               open={isSuccessAlertVisible}

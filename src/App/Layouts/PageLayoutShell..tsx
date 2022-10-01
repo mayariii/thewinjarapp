@@ -15,7 +15,8 @@ import {
   typographySecondary,
 } from "../../styles";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import { Button } from "@aws-amplify/ui-react";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { SecondaryButton } from "../../components/Button";
 
 const HeaderStyle = `${typographyPrimaryAccent} ${fontSizeXLarge} ${fontWeightMedium} px-12 py-12`;
 const IconStyle = `ml-1`;
@@ -26,7 +27,7 @@ const ContainerStyle = classnames(
   height("h-screen")
 );
 
-const FooterStyle = `${typographySecondary} ${fontSizeExtraSmall} py-12 px-12`;
+const FooterStyle = `${typographySecondary} ${fontSizeExtraSmall} py-8 px-12`;
 const FooterLinkStyle = `${linkFooter}`;
 
 export interface PageLayoutShellProps {
@@ -48,14 +49,18 @@ export const PageLayoutShell: React.FC<PageLayoutShellProps> = ({
       </header>
       {children}
       <footer className={FooterStyle}>
-        <Button onClick={signOut}>sign out</Button>
+        <SecondaryButton
+          label={"sign out"}
+          onClick={signOut}
+          endIcon={<LogoutOutlinedIcon />}
+        />
         <a
           href="https://www.nicoleis.xyz"
           target="_blank"
           rel="noreferrer"
           className={FooterLinkStyle}
         >
-          by nicoleis.xyz
+          <strong>the win jar</strong> by nicoleis.xyz
         </a>
       </footer>
     </div>

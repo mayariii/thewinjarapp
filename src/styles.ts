@@ -55,6 +55,7 @@ export const primaryAccentHex = "#7c3aed";
 export const primaryAccentHoverHex = "#a78bfa";
 export const primaryHex = "#0f172a";
 export const secondaryHex = "#64748b";
+export const secondaryHoverHex = "#e2e8f0";
 // -----
 // EFFECTS >> focus
 export const focusButton = classnames(

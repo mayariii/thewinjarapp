@@ -53,6 +53,8 @@ export const divideDefault = classnames(divideColor("divide-slate-200"));
 // COLOURS >> hex codes
 export const primaryAccentHex = "#7c3aed";
 export const primaryAccentHoverHex = "#a78bfa";
+export const primaryAccent100Hex = "#ede9fe";
+export const primaryAccent200Hex = "#ddd6fe";
 export const primaryHex = "#0f172a";
 export const secondaryHex = "#64748b";
 export const secondaryHoverHex = "#e2e8f0";

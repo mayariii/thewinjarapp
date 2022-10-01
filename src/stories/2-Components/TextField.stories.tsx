@@ -1,5 +1,5 @@
 import * as React from "react";
-import TextFieldInput from "../../components/TextField.";
+import TextFieldInput from "../../components/TextField";
 
 export default {
   title: "2-Components/Inputs",

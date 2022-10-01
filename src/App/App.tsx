@@ -1,11 +1,10 @@
 import React from "react";
-import "../App.css";
-import AddWinsPage from "./Pages/AddWinsPage.";
-import PageLayoutShell from "./Layouts/PageLayoutShell.";
+import AddWinsPage from "./Pages/AddWinsPage";
+import PageLayoutShell from "./Layouts/PageLayoutShell";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { DataStore } from "aws-amplify";
-import Login from "./Pages/Login.";
+import Login from "./Pages/Login";
 
 export function App() {
   const { user, signOut } = useAuthenticator();

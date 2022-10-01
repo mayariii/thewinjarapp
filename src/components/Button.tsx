@@ -17,7 +17,6 @@ interface ButtonProps {
 const Primary = styled(Button)({
   boxShadow: "none",
   textTransform: "none",
-  border: "1px solid",
   borderRadius: "6px",
   backgroundColor: styles.primaryAccentHex,
   "&:hover": {
@@ -61,14 +60,17 @@ export const PrimaryButton: React.FC<ButtonProps> = ({
 const Secondary = styled(Button)({
   boxShadow: "none",
   textTransform: "none",
-  color: styles.secondaryHex,
+  border: "1px solid",
+  borderColor: styles.primaryAccentHex,
+  borderRadius: "6px",
+  color: styles.primaryAccentHex,
   "&:hover": {
-    backgroundColor: styles.secondaryHoverHex,
+    backgroundColor: styles.primaryAccent100Hex,
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: styles.secondaryHoverHex,
+    backgroundColor: styles.primaryAccentHex,
   },
   "&:focus": {
     boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
@@ -87,7 +89,7 @@ export const SecondaryButton: React.FC<ButtonProps> = ({
   return (
     <Secondary
       name={name}
-      variant="text"
+      variant="outlined"
       size="large"
       startIcon={startIcon}
       endIcon={endIcon}
@@ -97,5 +99,47 @@ export const SecondaryButton: React.FC<ButtonProps> = ({
     >
       {label}
     </Secondary>
+  );
+};
+
+const Link = styled(Button)({
+  boxShadow: "none",
+  textTransform: "none",
+  color: styles.secondaryHex,
+  "&:hover": {
+    backgroundColor: styles.secondaryHoverHex,
+    boxShadow: "none",
+  },
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: styles.secondaryHoverHex,
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+  },
+});
+
+export const LinkButton: React.FC<ButtonProps> = ({
+  name,
+  label,
+  startIcon,
+  endIcon,
+  type,
+  onClick,
+  disabled,
+}: ButtonProps) => {
+  return (
+    <Link
+      name={name}
+      variant="text"
+      size="large"
+      startIcon={startIcon}
+      endIcon={endIcon}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {label}
+    </Link>
   );
 };

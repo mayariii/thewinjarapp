@@ -1,5 +1,5 @@
 import React from "react";
-import { SecondaryButton } from "../../components/Button";
+import { LinkButton } from "../../components/Button";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import * as styles from "../../styles";
 
@@ -13,7 +13,7 @@ export interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ signOut }) => {
   return (
     <footer className={FooterStyle}>
-      <SecondaryButton
+      <LinkButton
         label={"sign out"}
         onClick={signOut}
         endIcon={<LogoutOutlinedIcon />}

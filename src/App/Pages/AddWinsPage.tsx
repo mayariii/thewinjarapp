@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
+import DeleteIcon from "@mui/icons-material/Delete";
 import * as styles from "../../styles";
-import {
-  alignItems,
-  classnames,
-  display,
-  flexDirection,
-  gap,
-  justifyContent,
-  width,
-} from "tailwindcss-classnames";
+import * as classes from "tailwindcss-classnames";
 import TextFieldInput from "../../components/TextField";
-import { PrimaryButton } from "../../components/Button";
+import { PrimaryButton, SecondaryButton } from "../../components/Button";
 import { API } from "aws-amplify";
 import { listWins } from "../../graphql/queries";
 import {
@@ -19,37 +13,68 @@ import {
   deleteWin as deleteWinMutation,
 } from "../../graphql/mutations";
 import { View } from "@aws-amplify/ui-react";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton, Snackbar } from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
 
+import { Box, Fade, IconButton, Modal, Snackbar, Tooltip } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import { classnames } from "tailwindcss-classnames";
+
+const MainStyle = classnames(
+  classes.display("flex"),
+  classes.flexDirection("flex-col"),
+  classes.alignItems("items-center"),
+  classes.gap("gap-4")
+);
 const ContainerStyle = classnames(
-  display("flex"),
-  flexDirection("flex-col"),
-  alignItems("items-center"),
-  gap("gap-12")
+  classes.display("flex"),
+  classes.flexDirection("flex-col"),
+  classes.alignItems("items-center"),
+  classes.gap("gap-12")
 );
 const HeaderStyle = `${styles.textHeading}`;
 
 const WinListStyle = classnames(
-  display("flex"),
-  flexDirection("flex-col"),
-  alignItems("items-center")
+  classes.display("flex"),
+  classes.flexDirection("flex-col"),
+  classes.alignItems("items-start"),
+  classes.width("w-full"),
+  classes.gap("gap-8")
 );
 
 const WinStyle = classnames(
-  display("flex"),
-  flexDirection("flex-col"),
-  alignItems("items-center"),
-  justifyContent("justify-start"),
-  width("w-96")
+  classes.display("flex"),
+  classes.alignItems("items-start"),
+  classes.justifyContent("justify-between")
 );
 
-const DateStyle = `${styles.typographySecondary}`;
+const WinContentStyle = classnames(
+  classes.display("flex"),
+  classes.flexWrap("flex-wrap"),
+  classes.flexDirection("flex-col"),
+  classes.alignItems("items-start"),
+  classes.justifyContent("justify-start"),
+  classes.width("w-96"),
+  classes.whitespace("whitespace-normal"),
+  classes.flex("flex-initial")
+);
+
+const WinTextStyle = `${styles.typographyPrimary} flex-initial`;
+const DateStyle = `${styles.typographySecondary} ${styles.fontSizeSmall}`;
+
+// style config for MUI modal
+const modalStyle = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  maxWidth: "80vw",
+  maxHeight: "80vh",
+  borderRadius: "8px",
+  backgroundColor: "white",
+  boxShadow: 24,
+  p: 4,
+  overflowX: "none",
+  overflowY: "auto",
+};
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -64,6 +89,11 @@ export interface AddWinsPageProps {
 
 export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
   const [wins, setWins] = useState<any[]>([]);
+  const [isSuccessAlertVisible, setIsSuccessAlertVisible] =
+    React.useState(false);
+  const [alertText, setAlertText] = React.useState("");
+  const [winText, setWinText] = useState("");
+  const [isWinJarOpen, setIsWinJarOpen] = useState(false);
 
   useEffect(() => {
     fetchWins();
@@ -111,11 +141,6 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
     });
   }
 
-  const [isSuccessAlertVisible, setIsSuccessAlertVisible] =
-    React.useState(false);
-  const [alertText, setAlertText] = React.useState("");
-  const [winText, setWinText] = useState("");
-
   const handleAddWinClick = () => {
     setAlertText("Successfully added to your win jar! 🎉");
     setIsSuccessAlertVisible(true);
@@ -140,84 +165,89 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
 
   return (
     <>
-      <View>
-        <View as="form" onSubmit={createWin}>
-          <div className={ContainerStyle}>
-            <p className={HeaderStyle}>{`heeeey, great to see you! 👋`}</p>
-            <TextFieldInput
-              label={"tell me your win ✨"}
-              isMultiline
-              name={"winText"}
-              value={winText}
-              onChange={(event) => setWinText(event.target.value)}
-            />
-            <PrimaryButton
-              label={"add to win jar"}
-              endIcon={<AddOutlinedIcon />}
-              type={"submit"}
-              disabled={!winText}
-            />
-            <Snackbar
-              open={isSuccessAlertVisible}
-              autoHideDuration={6000}
-              onClose={handleAlertClose}
-            >
-              <Alert
-                onClose={handleAlertClose}
-                severity="success"
-                sx={{ width: "100%" }}
-              >
-                {alertText}
-              </Alert>
-            </Snackbar>
-          </div>
+      <View className={MainStyle}>
+        <View as="form" onSubmit={createWin} className={ContainerStyle}>
+          <p className={HeaderStyle}>{`heeeey, great to see you! 👋`}</p>
+          <TextFieldInput
+            label={"tell me your win ✨"}
+            isMultiline
+            name={"winText"}
+            value={winText}
+            onChange={(event) => setWinText(event.target.value)}
+          />
+          <PrimaryButton
+            label={"add to win jar"}
+            endIcon={<AddOutlinedIcon />}
+            type={"submit"}
+            disabled={!winText}
+          />
         </View>
-        <View margin="3rem 0">
-          <div className={WinListStyle}>
-            {wins.length === 0 ? (
-              <p className={`${styles.typographySecondary}`}>no wins yet</p>
-            ) : (
-              wins.map((win) => (
-                <div className={WinStyle} key={win.id}>
-                  <List
-                    sx={{
-                      width: "100%",
-                      maxWidth: 360,
-                    }}
-                  >
-                    <ListItem alignItems="flex-start">
-                      <ListItemAvatar>
-                        <IconButton
-                          aria-label="delete win"
-                          size={"small"}
-                          onClick={() => {
-                            deleteWin(win);
-                            handleDeleteWinClick();
-                          }}
-                        >
-                          <DeleteIcon fontSize="small" />
-                        </IconButton>
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={
-                          <>
-                            <p>{win.win_text}</p>
-                          </>
-                        }
-                        secondary={
-                          <>
-                            <p className={DateStyle}>
+        <View className={ContainerStyle}>
+          <Tooltip title="No wins yet">
+            <span>
+              <SecondaryButton
+                label={"open win jar"}
+                onClick={() => setIsWinJarOpen(true)}
+                disabled={!wins.length}
+                startIcon={<AutoAwesomeOutlinedIcon />}
+              />
+            </span>
+          </Tooltip>
+          <Modal
+            open={isWinJarOpen}
+            onClose={() => setIsWinJarOpen(false)}
+            closeAfterTransition
+            keepMounted
+          >
+            <Fade in={isWinJarOpen}>
+              <Box sx={modalStyle}>
+                <p className={HeaderStyle}>Your wins</p>
+                <div className={WinListStyle}>
+                  {!wins.length ? (
+                    <p className={`${styles.typographySecondary}`}>
+                      no wins yet
+                    </p>
+                  ) : (
+                    wins
+                      .map((win) => (
+                        <div key={win.id} className={WinStyle}>
+                          <div className={WinContentStyle}>
+                            <span className={DateStyle}>
                               {new Date(win.createdAt).toLocaleDateString()}
-                            </p>
-                          </>
-                        }
-                      />
-                    </ListItem>
-                  </List>
+                            </span>
+                            <span className={WinTextStyle}>{win.win_text}</span>
+                          </div>
+                          <IconButton
+                            aria-label="delete win"
+                            size={"small"}
+                            onClick={() => {
+                              deleteWin(win);
+                              handleDeleteWinClick();
+                            }}
+                          >
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        </div>
+                      ))
+                      .reverse()
+                  )}
                 </div>
-              ))
-            )}
-          </div>
+              </Box>
+            </Fade>
+          </Modal>
+          <Snackbar
+            open={isSuccessAlertVisible}
+            autoHideDuration={6000}
+            onClose={handleAlertClose}
+          >
+            <Alert
+              onClose={handleAlertClose}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              {alertText}
+            </Alert>
+          </Snackbar>
         </View>
       </View>
     </>

@@ -1,19 +1,14 @@
 import React from "react";
-import {
-  classnames,
-  display,
-  flexDirection,
-  height,
-  justifyContent,
-} from "tailwindcss-classnames";
+import * as classes from "tailwindcss-classnames";
 import Header from "./Header";
 import Footer from "./Footer";
+import { classnames } from "tailwindcss-classnames";
 
 const ContainerStyle = classnames(
-  display("flex"),
-  flexDirection("flex-col"),
-  justifyContent("justify-between"),
-  height("h-screen")
+  classes.display("flex"),
+  classes.flexDirection("flex-col"),
+  classes.justifyContent("justify-between"),
+  classes.height("h-screen")
 );
 
 export interface PageLayoutShellProps {
@@ -30,7 +25,7 @@ export const PageLayoutShell: React.FC<PageLayoutShellProps> = ({
   return (
     <div className={ContainerStyle}>
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer signOut={signOut} />
     </div>
   );

@@ -41,14 +41,14 @@ const WinListStyle = classnames(
 
 const WinItemStyle = classnames(
   classes.display("flex"),
-  classes.alignItems("items-start"),
+  classes.alignItems("items-center"),
   classes.justifyContent("justify-between")
 );
 
 const WinContentStyle = classnames(
   classes.display("flex"),
   classes.flexDirection("flex-col"),
-  classes.width("w-64"),
+  classes.width("w-56"),
   classes.width("md:w-96"),
   classes.whitespace("whitespace-normal"),
   classes.overflow("overflow-hidden"),

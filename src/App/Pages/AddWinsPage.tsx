@@ -13,7 +13,6 @@ import {
   deleteWin as deleteWinMutation,
 } from "../../graphql/mutations";
 import { View } from "@aws-amplify/ui-react";
-
 import { Box, Fade, IconButton, Modal, Snackbar, Tooltip } from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { classnames } from "tailwindcss-classnames";
@@ -104,6 +103,7 @@ export const AddWinsPage: React.FC<AddWinsPageProps> = ({ user }) => {
       authMode: "AMAZON_COGNITO_USER_POOLS",
     }) as Promise<any>);
     const winsFromAPI = apiData.data.listWins.items;
+    // sort wins from newest to oldest creation date
     const winsSorted = winsFromAPI.sort(
       (a: { createdAt: string }, b: { createdAt: string }) => {
         var dateA = new Date(a.createdAt);

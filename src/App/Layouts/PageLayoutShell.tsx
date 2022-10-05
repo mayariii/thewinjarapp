@@ -4,6 +4,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { classnames } from "tailwindcss-classnames";
 
+// main page layout that can be reused across app pages
+
 const ContainerStyle = classnames(
   classes.display("flex"),
   classes.flexDirection("flex-col"),

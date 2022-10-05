@@ -17,6 +17,8 @@ import HeroImage from "./product-hero.png";
 const HeaderStyle = `${styles.typographyPrimaryAccent} ${styles.fontWeightMedium}`;
 const IconStyle = `ml-1`;
 
+// this page uses Amplify UI components and styling
+
 export function SignInHeader() {
   const { tokens } = useTheme();
 

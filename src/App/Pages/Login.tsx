@@ -12,6 +12,7 @@ import {
 import React from "react";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import * as styles from "../../styles";
+import HeroImage from "./product-hero.png";
 
 const HeaderStyle = `${styles.typographyPrimaryAccent} ${styles.fontWeightMedium}`;
 const IconStyle = `ml-1`;
@@ -121,7 +122,10 @@ export const Login: React.FC<LoginProps> = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid templateColumns={{ base: "1fr 0", medium: "1fr 1fr" }}>
+      <Grid
+        templateColumns={{ base: "1fr", large: "1fr 1fr" }}
+        rowGap={{ base: "20px" }}
+      >
         <Flex
           backgroundColor={tokens.colors.background.secondary}
           justifyContent="center"
@@ -136,9 +140,9 @@ export const Login: React.FC<LoginProps> = () => {
           </Authenticator>
         </Flex>
 
-        <View height="100vh">
+        <View height={{ base: "50vh", medium: "100vh" }}>
           <Image
-            src="https://images.unsplash.com/photo-1495954222046-2c427ecb546d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1600&ixid=MnwxfDB8MXxyYW5kb218MHx8Y29tcHV0ZXJzfHx8fHx8MTYzNzE5MzE2MQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+            src={HeroImage}
             width="100%"
             height="100%"
             objectFit="cover"

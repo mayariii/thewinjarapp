@@ -19,12 +19,12 @@ export const Footer: React.FC<FooterProps> = ({ signOut }) => {
         endIcon={<LogoutOutlinedIcon />}
       />
       <a
-        href="https://www.nicoleis.xyz"
+        href="https://www.nicoleintech.com/the-win-jar-hacking-our-positive-psychology-and-building-with-aws-amplify"
         target="_blank"
         rel="noreferrer"
         className={FooterLinkStyle}
       >
-        <strong>the win jar</strong> by nicoleis.xyz
+        <strong>read more</strong> about the win jar
       </a>
     </footer>
   );
